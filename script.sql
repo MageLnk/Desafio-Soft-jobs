@@ -6,7 +6,7 @@ CREATE TABLE eventos (id SERIAL, titulo VARCHAR(50) NOT NULL, descripcion VARCHA
 INSERT INTO eventos values
 (DEFAULT, 'Sube tu autoestima', 'Vive la experiencia de subir uno de los cerros mas desafiantes de la ciudad con los mejores guias', '2022-11-27', 'Jardin Rojo'),
 (DEFAULT, 'Ponle sabor a tu vaso de agua', 'Aprende todas las combinaciones deliciosas que puedes hacer para disfrutar tu hidratacion', '2022-10-15', 'Plaza Leones'),
-(DEFAULT, 'Pedalea tus pulmones', 'Ven a disfrutar un paseo en bicicleta con todos tus vecinos', '2022-08-16', 'Parque Japones')
+(DEFAULT, 'Pedalea tus pulmones', 'Ven a disfrutar un paseo en bicicleta con todos tus vecinos', '2022-08-16', 'Parque Japones');
 
 
 CREATE TABLE usuarios (id SERIAL, email VARCHAR(50) NOT NULL, password VARCHAR(60) NOT NULL);
