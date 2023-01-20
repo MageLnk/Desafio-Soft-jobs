@@ -1,7 +1,13 @@
 CREATE DATABASE vida_sana;
 \c vida_sana;
 
-CREATE TABLE eventos (id SERIAL, titulo VARCHAR(50) NOT NULL, descripcion VARCHAR(250) NOT NULL, fecha DATE NOT NULL, lugar VARCHAR(50) NOT NULL);
+CREATE TABLE eventos (
+    id SERIAL, 
+    titulo VARCHAR(50) NOT NULL, 
+    descripcion VARCHAR(250) NOT NULL, 
+    fecha DATE NOT NULL, 
+    lugar VARCHAR(50) NOT NULL
+    );
 
 INSERT INTO eventos values
 (DEFAULT, 'Sube tu autoestima', 'Vive la experiencia de subir uno de los cerros mas desafiantes de la ciudad con los mejores guias', '2022-11-27', 'Jardin Rojo'),
@@ -9,7 +15,11 @@ INSERT INTO eventos values
 (DEFAULT, 'Pedalea tus pulmones', 'Ven a disfrutar un paseo en bicicleta con todos tus vecinos', '2022-08-16', 'Parque Japones');
 
 
-CREATE TABLE usuarios (id SERIAL, email VARCHAR(50) NOT NULL, password VARCHAR(60) NOT NULL);
+CREATE TABLE usuarios (
+    id SERIAL, 
+    email VARCHAR(50) NOT NULL, 
+    password VARCHAR(60) NOT NULL
+    );
 
 INSERT INTO usuarios values
 (DEFAULT, 'admin@vidasana.com', '123456'),
