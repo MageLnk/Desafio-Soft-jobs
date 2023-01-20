@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 // DB's
 const pool = require("../database");
 // Querys
-const newUser = async ({ email, password, rol, lenguage }) => {
+const createNewUser = async ({ email, password, rol, lenguage }) => {
   try {
     const hashPass = bcrypt.hashSync(password);
     const values = [email, hashPass, rol, lenguage];
@@ -15,7 +15,7 @@ const newUser = async ({ email, password, rol, lenguage }) => {
   }
 };
 
-const checkUserInfo = async ({ email, password }) => {
+const checkUserInfoForLogIn = async ({ email, password }) => {
   try {
     const values = [email];
     const query = "SELECT * FROM usuarios WHERE email = $1";
@@ -32,4 +32,4 @@ const checkUserInfo = async ({ email, password }) => {
   }
 };
 
-module.exports = { newUser, checkUserInfo };
+module.exports = { createNewUser, checkUserInfoForLogIn };
