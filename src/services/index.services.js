@@ -11,8 +11,25 @@ const newUser = async ({ email, password, rol, lenguage }) => {
     if (rowCount != 1) throw { msg: "No se pudo crear el usuario. Inténtelo nuevamente" };
     return rowCount;
   } catch (error) {
-    throw { msg: "Algo ha ocurrido", error };
+    throw { msg: "Algo inesperado ha ocurrido", error };
   }
 };
 
-module.exports = { newUser };
+const checkUserInfo = async ({ email, password }) => {
+  try {
+    const values = [email];
+    const query = "SELECT * FROM usuarios WHERE email = $1";
+    const {
+      rows: [user],
+      rowCount,
+    } = await pool.query(query, values);
+    const { password: passSaved } = user;
+    const checkPassword = bcrypt.compareSync(password, passSaved);
+
+    if (!checkPassword || !rowCount) throw { msg: "Email o contraseña incorrectos" };
+  } catch (error) {
+    throw { msg: "Algo inesperado ha ocurrido", error };
+  }
+};
+
+module.exports = { newUser, checkUserInfo };
