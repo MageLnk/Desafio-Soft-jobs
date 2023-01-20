@@ -1,10 +1,10 @@
-const { bringEverythingFunc } = require("../recordarnombre/index.recordarnombre");
+const { testFunc } = require("../services/index.services");
 //
 const controller = {};
 
-controller.bringAllTest = async (req, res) => {
+controller.test = async (req, res) => {
   try {
-    const bringEverythingTest = await bringEverythingFunc();
+    const bringEverythingTest = await testFunc();
     res.status(200).send(bringEverythingTest);
   } catch (error) {
     res.status(500).send({ msg: error });
