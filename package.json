@@ -1,5 +1,5 @@
 {
-  "name": "clase",
+  "name": "desafio-soft-jobs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,15 +8,24 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MageLnk/Desafio-Soft-jobs.git"
+  },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "MageLink",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/MageLnk/Desafio-Soft-jobs/issues"
+  },
+  "homepage": "https://github.com/MageLnk/Desafio-Soft-jobs#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
-    "express": "^4.18.1",
+    "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
-    "pg": "^8.8.0"
+    "pg": "^8.8.0",
+    "pg-format": "^1.0.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
