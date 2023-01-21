@@ -32,4 +32,16 @@ const checkUserInfoForLogIn = async ({ email, password }) => {
   }
 };
 
-module.exports = { createNewUser, checkUserInfoForLogIn };
+const getUserData = async (email) => {
+  const values = [email];
+  const query = "SELECT * FROM usuarios WHERE email = $1";
+  const {
+    rows: [user],
+    rowCount,
+  } = await pool.query(query, values);
+  if (!rowCount) throw { msg: "No se encontró ningún usuario con este email" };
+  delete user.password;
+  return user;
+};
+
+module.exports = { createNewUser, checkUserInfoForLogIn, getUserData };
