@@ -1,25 +1,15 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-// Import Middleware
+// Import Middlewares
+const { morganHechizo } = require("./middlewares");
 // Basic starting points
 const app = express();
 const PORT = process.env.PORT;
 // Middlewares
 app.use(cors());
 app.use(express.json());
-app.use((req, res, next) => {
-  const parametros = req.params;
-  const url = req.url;
-  console.log(
-    `
-    Hoy ${new Date()}
-    Se ha recibido una consulta en la ruta ${url}
-    acompañado de los parámetros: `,
-    parametros
-  );
-  return next();
-});
+app.use(morganHechizo);
 // Routes
 const routing = require("./routes/index.routes");
 // App

@@ -25,4 +25,19 @@ const tokenVerification = (req, res, next) => {
 
 // Cómo manejar esto?
 
-module.exports = { tokenVerification, checkEssentialInformation };
+const morganHechizo = (req, res, next) => {
+  const parametros = req.params;
+  const url = req.url;
+  console.log(
+    `
+    Hoy ${new Date()}
+    Se ha recibido una consulta en la ruta ${url}
+    acompañado de los parámetros: `,
+    parametros
+  );
+  return next();
+};
+
+// Cómo manejar esto?
+
+module.exports = { tokenVerification, checkEssentialInformation, morganHechizo };
