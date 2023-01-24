@@ -29,8 +29,6 @@ const tokenVerification = async (req, res, next) => {
   }
 };
 
-// Cómo manejar esto?
-
 const morganHechizo = (req, res, next) => {
   const parametros = req.params;
   const url = req.url;
@@ -43,7 +41,5 @@ const morganHechizo = (req, res, next) => {
   );
   return next();
 };
-
-// Cómo manejar esto?
 
 module.exports = { tokenVerification, checkEssentialInformation, morganHechizo };
