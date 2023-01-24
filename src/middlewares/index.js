@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const { validateToken } = require("../utilities/validateToken");
 //
 const checkEssentialInformation = (req, res, next) => {
   const { email, password } = req.body;
@@ -9,18 +10,23 @@ const checkEssentialInformation = (req, res, next) => {
   next();
 };
 
-const tokenVerification = (req, res, next) => {
-  const token = req.header("Authorization").split("Bearer ")[1];
-  if (!token) {
-    res.status(401).send({ msg: "Se necesita un token para continuar" });
-    return;
+const tokenVerification = async (req, res, next) => {
+  try {
+    const token = req.header("Authorization").split("Bearer ")[1];
+    if (!token) {
+      res.status(401).send({ msg: "Se necesita un token para continuar" });
+      return;
+    }
+    const validToken = await validateToken(token, res);
+    if (!validToken) {
+      res.status(401).send({ msg: "Token ingresado no es válido" });
+      return;
+    }
+    next();
+  } catch (error) {
+    res.status(500).send({ msg: error });
+    console.error(`Un usuario acaba de generar el error: ${error}`);
   }
-  const validToken = jwt.verify(token, process.env.SECRET_KEY);
-  if (!validToken) {
-    res.status(401).send({ msg: "Token ingresado no es válido" });
-    return;
-  }
-  next();
 };
 
 // Cómo manejar esto?
